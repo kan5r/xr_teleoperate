@@ -200,7 +200,8 @@ This program supports XR control of a physical robot or in simulation. Choose mo
 | `--xr-mode` |             Choose XR input mode              | `hand` (**hand tracking**)<br/>`controller` (**controller tracking**) |  `hand`   |
 |   `--arm`   | Choose robot arm type (see 0. 📖 Introduction) |           `G1_29`<br/>`G1_23`<br/>`H1_2`<br/>`H1`            |  `G1_29`  |
 |   `--ee`    |  Choose end-effector (see 0. 📖 Introduction)  |       `dex1`<br/>`dex3`<br/>`inspire1`<br />`brainco`        |   none    |
-
+|   `--base-type`| Lower Body Type: Select the desired lower-body configuration. |    `mobile_lift`<br />`lift`<br />`None`     | None |
+|   `--control-device`| Lower Body Control Device: Select the device type used to control the lower body. |    `unitree_handle`<br />`other`     | unitree_handle |            
 - **Mode flags**
 
 |    ⚙️ Flag    |                        📜 Description                         |

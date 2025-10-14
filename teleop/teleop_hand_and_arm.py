@@ -83,7 +83,7 @@ if __name__ == '__main__':
     parser.add_argument('--xr-mode', type=str, choices=['hand', 'controller'], default='hand', help='Select XR device tracking source')
     parser.add_argument('--arm', type=str, choices=['G1_29', 'G1_23', 'H1_2', 'H1'], default='G1_29', help='Select arm controller')
     parser.add_argument('--ee', type=str, choices=['dex1', 'dex3', 'inspire1', 'brainco'], help='Select end effector controller')
-    parser.add_argument('--base-type', type=str, choices=['mobile_lift', 'lift',''], default='', help='Select mobile controller')
+    parser.add_argument('--base-type', type=str, choices=['mobile_lift', 'lift','None'], default='None', help='Select mobile controller')
     parser.add_argument('--control-device', type=str, choices=['unitree_handle', 'other'], default='unitree_handle', help='Select mobile control device')
     # mode flags
     parser.add_argument('--motion', action = 'store_true', help = 'Enable motion control mode')
@@ -220,7 +220,7 @@ if __name__ == '__main__':
             pass
 
         # For mobile base and elevation control
-        if args.base_type != "":
+        if args.base_type != "None":
             control_data_mapper = ControlDataMapper()
             if args.base_type == "mobile_lift":
                 mobile_ctrl = G1_Mobile_Lift_Controller(args.base_type, args.control_device, simulation_mode=args.sim)
@@ -351,7 +351,7 @@ if __name__ == '__main__':
             arm_ctrl.ctrl_dual_arm(sol_q, sol_tauff)
 
             # For mobile base and elevation control
-            if args.base_type != "" and mobile_ctrl != None:
+            if args.base_type != "None" and mobile_ctrl != None:
                 vel_data = control_data_mapper.update(-tele_data.tele_state.left_thumbstick_value[1], -tele_data.tele_state.left_thumbstick_value[0], -tele_data.tele_state.right_thumbstick_value[0], -tele_data.tele_state.right_thumbstick_value[1])
                 mobile_ctrl.g1_height_action_array_in[0] = vel_data['height']  
                 if args.base_type == "mobile_lift":
@@ -478,7 +478,7 @@ if __name__ == '__main__':
                             "qpos": current_body_action,
                         }, 
                     }
-                    if args.base_type != "" and mobile_ctrl != None:
+                    if args.base_type != "None" and mobile_ctrl != None:
                         # Read action data (control commands published from other programs)
                         height_action = mobile_ctrl.g1_height_action_array_out
                         # Read state data (actual robot state)
