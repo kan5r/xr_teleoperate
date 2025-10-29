@@ -493,20 +493,31 @@ if __name__ == '__main__':
                         "body": {
                             "qpos": current_body_action,
                         }, 
+                        
                     }
                     if args.base_type != "None" and mobile_ctrl != None:
-                        states["body"]["lift_vel"] = np.array(height_state[1]).tolist(),
-                        states["body"]["lift_height"] =  np.array(height_state[0]).tolist(),  # in meters
-                        actions["body"]["lift_vel"] =  np.array(height_action[0]).tolist(),
-                        
+                        # 动态添加 torso 键 (Dynamically add torso key)
+                        states["torso"] = {
+                            "height": np.array(height_state[0]).tolist(),
+                            "qvel": np.array(height_state[1]).tolist()
+                        }
+                        actions["torso"] = {
+                            "qvel": np.array(height_action[0]).tolist()
+                        }
                         if args.base_type == "mobile_lift":
-                            states["body"]["move_x_vel"] =  np.array(move_state[0]).tolist(),
-                            states["body"]["move_yaw_vel"] =  np.array(move_state[1]).tolist(),
-                            actions["body"]["move_x_vel"] =  np.array(move_action[0]).tolist(),
-                            actions["body"]["move_yaw_vel"] =  np.array(move_action[1]).tolist(),
+                            states["chassis"] = {
+                                "qvel": np.array(move_state).tolist()  # [x_vel, yaw_vel]
+                            }
+                            actions["chassis"] = {
+                                "qvel": np.array(move_action).tolist()   # [x_vel, yaw_vel]
+                            }
                         if args.use_waist:
-                            states["body"]["waist_qpos"] = np.array(waist_state).tolist(),
-                            actions["body"]["waist_qpos"] = np.array(waist_action).tolist(),
+                            states["waist"] = {
+                                "qpos": np.array(waist_state).tolist(),#[yaw,pitch]
+                            }
+                            actions["waist"] = {
+                                "qpos": np.array(waist_action).tolist(),  #[yaw]
+                            }
 
                     if args.sim:
                         sim_state = sim_state_subscriber.read_data()            
