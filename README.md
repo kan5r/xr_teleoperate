@@ -45,6 +45,23 @@
 
 
 
+## 🛠️ 自作Docker
+### ダウンロード
+```shell
+git clone https://github.com/kan5r/xr_teleoperate.git
+cd xr_teleoperate
+git submodule update --init --depth 1
+docker build -f docker/Dockerfile -t xr-teleoperate .
+```
+
+### 実行例
+```shell
+./RUN-DOCKER-CONTAINER.sh
+
+# コンテナ内
+cd teleop && python teleop_hand_and_arm.py --xr-mode=hand --arm=G1_29 --ee=dex3 --sim --record
+```
+
 # 0. 📖 Introduction
 
 This repository implements **teleoperation** control of a **Unitree humanoid robot** using **XR (Extended Reality) devices** (such as Apple Vision Pro, PICO 4 Ultra Enterprise, or Meta Quest 3). 
