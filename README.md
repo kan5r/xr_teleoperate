@@ -59,7 +59,7 @@ docker build -f docker/Dockerfile -t xr-teleoperate .
 ./RUN-DOCKER-CONTAINER.sh
 
 # コンテナ内
-cd teleop && python teleop_hand_and_arm.py --xr-mode=hand --arm=G1_29 --ee=dex3 --sim --record
+python teleop_hand_and_arm.py --xr-mode=hand --arm=G1_29 --ee=dex3 --sim --record
 ```
 
 # 0. 📖 Introduction
