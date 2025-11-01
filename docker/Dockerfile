@@ -40,6 +40,7 @@ RUN echo "if [ -f /opt/conda/etc/profile.d/conda.sh ]; then" >> /root/.bashrc &&
     echo "    conda activate tv" >> /root/.bashrc && \
     echo "fi" >> /root/.bashrc
 
+WORKDIR /workspace/teleop
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
