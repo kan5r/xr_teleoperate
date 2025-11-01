@@ -7,3 +7,6 @@
 [submodule "teleop/teleimager"]
 	path = teleop/teleimager
 	url = https://github.com/unitreerobotics/teleimager.git
+[submodule "third_party/unitree_sdk2_python"]
+	path = third_party/unitree_sdk2_python
+	url = https://github.com/kan5r/unitree_sdk2_python.git
