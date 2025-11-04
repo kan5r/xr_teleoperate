@@ -29,6 +29,5 @@ docker run -it --rm \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v ${PWD}:/workspace \
     --name ${CONTAINER_NAME} \
-    ${IMAGE_NAME}
-
-# python teleop_hand_and_arm.py --xr-mode=hand --arm=G1_29 --ee=dex3 --sim --record
+    ${IMAGE_NAME} \
+    python teleop_hand_and_arm.py --xr-mode=hand --arm=G1_29 --ee=dex3 --sim --record
