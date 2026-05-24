@@ -30,4 +30,4 @@ docker run -it --rm \
     -v ${PWD}:/workspace \
     --name ${CONTAINER_NAME} \
     ${IMAGE_NAME} \
-    python teleop_hand_and_arm.py --xr-mode=hand --arm=G1_29 --ee=dex3 --sim --record
+    python teleop_hand_and_arm.py --input-mode=hand --arm=G1_29 --ee=dex3 --sim --record

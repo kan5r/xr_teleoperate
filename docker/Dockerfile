@@ -24,9 +24,11 @@ WORKDIR /workspace
 RUN conda create -n tv python=3.10 pinocchio=3.1.0 numpy=1.26.4 -c conda-forge -y
 SHELL ["conda", "run", "-n", "tv", "/bin/bash", "-c"]  
 
-RUN git submodule update --init --depth 1 && \
+RUN git submodule update --init --recursive --depth 1 && \
     cd teleop/televuer && \
     pip install -e . && \
+    cd ../teleimager && \
+    pip install -e . --no-deps && \
     cd ../robot_control/dex-retargeting && \
     pip install -e . && \
     cd ../../../ && \
