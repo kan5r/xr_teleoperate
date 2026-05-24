@@ -27,8 +27,9 @@ SHELL ["conda", "run", "-n", "tv", "/bin/bash", "-c"]
 RUN git submodule update --init --recursive --depth 1 && \
     cd teleop/televuer && \
     pip install -e . && \
+    pip install "vuer[all]==0.0.72" && \
     cd ../teleimager && \
-    pip install -e . --no-deps && \
+    pip install -e . && \
     cd ../robot_control/dex-retargeting && \
     pip install -e . && \
     cd ../../../ && \
